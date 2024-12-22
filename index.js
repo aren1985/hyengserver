@@ -46,6 +46,12 @@ app.use("/documents", documentRoutes);
 app.use("/words", wordsRoute);
 app.use("/themes", themeRoutes);
 
+app.use("/hh", (req, res) => {
+  res.json({
+    name: "vaxo",
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
