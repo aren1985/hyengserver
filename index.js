@@ -46,7 +46,7 @@ app.use("/documents", documentRoutes);
 app.use("/words", wordsRoute);
 app.use("/themes", themeRoutes);
 
-app.use("/hh", (req, res) => {
+app.use("/", (req, res) => {
   res.json({
     name: "vaxo",
   });
