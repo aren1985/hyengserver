@@ -11,22 +11,7 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = [
-  "https://hyeng.vercel.app", // Add your Vercel app URL
-  "https://hyengserver.onrender.com", // Optional, for server-to-server communication
-];
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-  })
-);
+app.use(cors());
 
 const port = process.env.PORT || 5000;
 const mongourl = process.env.MONGOURL;
