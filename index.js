@@ -30,10 +30,22 @@ app.use("/documents", documentRoutes);
 app.use("/words", wordsRoute);
 app.use("/themes", themeRoutes);
 
-app.use("/", (req, res) => {
+/*app.use("/", (req, res) => {
   res.json({
     name: "vaxo",
   });
+});*/
+
+app.use("/", async (req, res) => {
+  try {
+    const Words = require("./models/Words"); // Import your Words model
+    const words = await Words.find(); // Fetch all words from the database
+
+    res.json(words); // Respond with the words
+  } catch (err) {
+    console.error("Error fetching words:", err);
+    res.status(500).json({ error: "Failed to fetch words" });
+  }
 });
 
 app.listen(port, () => {
