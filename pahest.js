@@ -35,10 +35,6 @@ const DocumentSchema = new mongoose.Schema({
           },
         },
       ],
-      video: {
-        type: String, // YouTube link for the theme's video
-        required: false, // Optional, can be omitted in requests
-      },
     },
   ],
 });
