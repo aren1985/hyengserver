@@ -13,13 +13,25 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
+// Define allowed origins
+const allowedOrigins = ["http://localhost:3000", "https://hyeng.vercel.app"];
+
+// CORS options to check the origin
 const corsOptions = {
-  origin: "http://localhost:3000", // Replace with your frontend URL in production
+  origin: function (origin, callback) {
+    // Check if the origin is in the allowedOrigins list
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      // !origin allows requests from tools like Postman
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-// Enable CORS middleware
+// Enable CORS middleware with options
 app.use(cors(corsOptions));
 
 const port = process.env.PORT || 10000;
