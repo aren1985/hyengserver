@@ -5,7 +5,9 @@ const imageRoutes = require("./routes/imageRoutes");
 const documentRoutes = require("./routes/documentRoutes");
 const documentRoutes2 = require("./routes/documentRoutes2");
 const wordsRoute = require("./routes/wordsRoute");
+const wordsRoute2 = require("./routes/wordsRoute2");
 const themeRoutes = require("./routes/themesRoutes");
+const themeRoutes2 = require("./routes/themesRoutes2");
 const authRoutes = require("./routes/usersroutes");
 
 require("dotenv").config();
@@ -51,7 +53,9 @@ app.use("/images", imageRoutes);
 app.use("/documents", documentRoutes);
 app.use("/documents2", documentRoutes2);
 app.use("/words", wordsRoute);
+app.use("/words2", wordsRoute2);
 app.use("/themes", themeRoutes);
+app.use("/themes2", themeRoutes2);
 
 app.use("/", (req, res) => {
   res.json({
