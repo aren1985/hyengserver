@@ -1,4 +1,4 @@
-const express = require("express");
+/*const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/Users");
 
@@ -108,4 +108,4 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema);*/
