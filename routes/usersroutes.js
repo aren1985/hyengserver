@@ -1,10 +1,8 @@
 const express = require("express");
-
+const jwt = require("jsonwebtoken"); // Import jsonwebtoken for token generation
 const User = require("../models/Users");
 
 const router = express.Router();
-
-// Sign-Up Route
 
 // Sign-Up Route
 router.post("/signup", (req, res) => {
@@ -60,11 +58,13 @@ router.post("/signin", (req, res) => {
         return res.status(404).json({ message: "Invalid nickname or email" });
       }
 
-      // If user exists, create a simple "token" (For demo purposes, we'll return a fixed token)
-      const token = process.env.JWT_SECRET; // Replace this with an actual JWT token generation
+      // Generate a JWT token (using the user's ID and secret)
+      const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "1h", // Token expiration time (optional)
+      });
 
-      // Respond with success and the token
-      res.status(200).json({ message: "Sign-in successful", token });
+      // Respond with success, the token, and user data
+      res.status(200).json({ message: "Sign-in successful", token, user });
     })
     .catch((err) => {
       console.error(err); // Log any server errors
@@ -72,6 +72,7 @@ router.post("/signin", (req, res) => {
     });
 });
 
+// Forgot Nickname Route
 router.post("/forgot-nickname", (req, res) => {
   const { email } = req.body;
 

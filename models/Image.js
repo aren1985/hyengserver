@@ -7,7 +7,14 @@ const ImageSchema = new mongoose.Schema({
   },
   category: {
     type: [String], // Change this to an array
-    enum: ["animals", "drinks", "transports", "home features"], // Restricts the categories
+    enum: [
+      "animals",
+      "drinks",
+      "transports",
+      "home features",
+      "professions",
+      "nature",
+    ], // Restricts the categories
     required: true,
   },
   name: {
