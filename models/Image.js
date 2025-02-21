@@ -14,6 +14,8 @@ const ImageSchema = new mongoose.Schema({
       "home features",
       "professions",
       "nature",
+      "nature1",
+      "buildings",
     ], // Restricts the categories
     required: true,
   },
