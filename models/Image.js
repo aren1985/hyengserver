@@ -11,7 +11,7 @@ const ImageSchema = new mongoose.Schema({
       "animals",
       "drinks",
       "transports",
-      "home features",
+      "home",
       "professions",
       "nature",
       "nature1",
