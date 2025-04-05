@@ -10,6 +10,8 @@ const ImageSchema = new mongoose.Schema({
     enum: [
       "animals",
       "drinks",
+      "clothes",
+      "clothes2",
       "transports",
       "home",
       "professions",
